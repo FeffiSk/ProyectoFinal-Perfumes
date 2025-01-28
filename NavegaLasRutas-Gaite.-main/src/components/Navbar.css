@@ -1,0 +1,40 @@
+.navbar {
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar .menu-icon {
+    cursor: pointer;
+  }
+  
+  .navbar .menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+  .navbar .desktop-menu {
+    display: flex;
+    gap: 1rem;
+    margin-top: 10px;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0.5rem 0;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar .desktop-menu {
+      display: none;
+    }
+  
+    .navbar .menu {
+      display: flex;
+    }
+  }
