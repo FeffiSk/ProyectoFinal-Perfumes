@@ -1,8 +1,12 @@
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importamos el CSS de Bootstrap
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Importamos el JS de Bootstrap
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import PerfumeList from "./components/PerfumeList";
+import Error from "./components/Error";
+import { MyContextProvider } from './context';
 
 const productos = [
   { id: 1, nombre: 'Perfume Floral', categoria: 'floral' },
@@ -12,14 +16,17 @@ const productos = [
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/categoria/:categoria" element={<PerfumeList />} /> {}
-      </Routes>
-    </Router>
+    <MyContextProvider>  {/* Aquí envolvemos la aplicación con el proveedor del contexto */}
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/categoria/:categoria" element={<PerfumeList />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </Router>
+    </MyContextProvider>
   );
 }
 

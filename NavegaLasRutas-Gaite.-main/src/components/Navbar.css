@@ -1,40 +1,156 @@
 .navbar {
-    padding: 1rem;
-    background-color: #333;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 1rem 2rem; /* Añadimos más espacio lateral */
+  background-color: #343a40; /* Fondo oscuro */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  z-index: 1000; /* Asegurarse de que esté por encima de otros elementos */
+}
+
+/* Navbar marca */
+.navbar .navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px; /* Espaciado entre letras */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Hover sobre la marca */
+.navbar .navbar-brand:hover {
+  color: #ff9900; /* Color de hover para la marca */
+}
+
+/* Menú hamburguesa */
+.navbar .navbar-toggler {
+  border-color: transparent; /* Eliminar el borde del botón hamburguesa */
+  background-color: transparent; /* Botón transparente */
+  display: block;
+}
+
+.navbar .navbar-toggler-icon {
+  background-color: #ff9900; /* Color del ícono del menú */
+}
+
+/* Menú desplegable */
+.navbar .collapse.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar .menu {
+  display: none; /* Menú oculto por defecto */
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #343a40; /* Fondo del menú */
+  width: 100%;
+}
+
+.navbar .menu.show {
+  display: flex; /* Mostrar el menú cuando se activa */
+}
+
+.navbar .menu a {
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover en los enlaces del menú */
+.navbar .menu a:hover {
+  background-color: #555;
+  color: #ff9900; /* Cambio de color al pasar el ratón */
+}
+
+/* Estilos de los botones de usuario */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-info input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  margin-right: 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.user-info button {
+  padding: 0.5rem 1rem;
+  background-color: #28a745; /* Botón de iniciar sesión - Verde */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.user-info button:hover {
+  background-color: #218838; /* Cambio de color al hacer hover */
+}
+
+/* Estilo del botón de cerrar sesión */
+.navbar .user-info button.logout {
+  background-color: #dc3545; /* Botón rojo para cerrar sesión */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.navbar .user-info button.logout:hover {
+  background-color: #c82333; /* Cambio de color al hacer hover */
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  /* Escondemos el menú de escritorio en pantallas pequeñas */
+  .navbar .desktop-menu {
+    display: none; /* Escondemos el menú en pantallas pequeñas */
   }
-  
-  .navbar .menu-icon {
-    cursor: pointer;
-  }
-  
+
+  /* Mostramos el menú hamburguesa */
   .navbar .menu {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
-  }
-  
-  .navbar .desktop-menu {
-    display: flex;
     gap: 1rem;
-    margin-top: 10px;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-  
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    margin: 0.5rem 0;
+
+  /* El menú hamburguesa debe ser visible en todo momento */
+  .navbar .menu-icon {
+    display: block;
   }
-  
-  @media (max-width: 768px) {
-    .navbar .desktop-menu {
-      display: none;
-    }
-  
-    .navbar .menu {
-      display: flex;
-    }
+
+  /* Estilos para los enlaces en el menú hamburguesa */
+  .navbar .menu a {
+    font-size: 1.2rem;
+    padding: 1rem;
   }
+
+  .navbar .user-info input {
+    margin-top: 1rem;
+  }
+
+  /* Para evitar que el menú hamburguesa sobrescriba los enlaces */
+  .navbar .menu a {
+    text-align: center; /* Centrar los enlaces en el menú desplegable */
+  }
+}
